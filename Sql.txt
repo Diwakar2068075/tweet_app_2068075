@@ -1,0 +1,21 @@
+create database TweetApp
+use TweetApp;
+create table UserData
+(
+	first_name varchar(20) not null,
+	last_name varchar(20),
+	gender varchar(1) not null,
+	UserId varchar(50) primary key not null CHECK (UserId like '%@%._%'),
+	UserName varchar(50) not null,
+	Password varchar(30) NOT NULL CHECK ( LEN(Password) BETWEEN 8 AND 20 and Password like '%[0-9]%' and Password like '%[A-Z]%'),
+	UNIQUE (UserName, first_name)
+)
+select * from UserData;
+select * from TweetData;
+
+Create table TweetData
+(
+	ID int primary key identity(1, 1) not null,
+	UserName varchar(50) not null,
+	Tweets varchar(max) not null
+)
